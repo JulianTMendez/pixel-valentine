@@ -22,7 +22,6 @@ class EndpointPixorama extends _i1.EndpointRef {
   @override
   String get name => 'pixorama';
 
-  /// Sets a single pixel and notifies all connected clients about the change.
   _i2.Future<void> setPixel({
     required int colorIndex,
     required int pixelIndex,

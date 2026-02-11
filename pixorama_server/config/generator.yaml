@@ -1,0 +1,5 @@
+name: pixorama
+type: server
+modules:
+  serverpod:
+    nickname: serverpod
