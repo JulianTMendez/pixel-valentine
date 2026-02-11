@@ -18,6 +18,7 @@ webServer:
 
 database:
   host: ${DB_HOST}
-  port: ${DB_PORT}
+  port: 5432
   name: ${DB_NAME}
   user: ${DB_USER}
+
