@@ -1,8 +1,9 @@
 # Serverpod
 /pixorama_server/config/passwords.yaml
-/pixorama_server/lib/src/generated/
+# /pixorama_server/lib/src/generated/ # Removed to allow deployment
 /pixorama_server/lib/src/protocol/
 /pixorama_server/lib/src/models/
+
 
 # Flutter
 .dart_tool/

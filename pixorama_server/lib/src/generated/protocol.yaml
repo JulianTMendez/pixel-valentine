@@ -1,0 +1,5 @@
+pixorama:
+  - setPixel:
+  - imageUpdates:
+greeting:
+  - hello:
