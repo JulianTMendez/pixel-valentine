@@ -2,13 +2,20 @@ import 'package:pixorama_client/pixorama_client.dart';
 import 'package:flutter/material.dart';
 import 'package:serverpod_flutter/serverpod_flutter.dart';
 
+import 'config/app_config.dart';
 import 'src/pixorama.dart';
 
-var client = Client('http://$localhost:8080/')
-  ..connectivityMonitor = FlutterConnectivityMonitor();
+late Client client;
 
-void main() {
-  // Start the app.
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Load configuration (API URL) from assets/config.json
+  final config = await AppConfig.loadConfig();
+  final apiUrl = config.apiUrl ?? 'http://localhost:8080/';
+
+  client = Client(apiUrl)..connectivityMonitor = FlutterConnectivityMonitor();
+
   runApp(const PixoramaApp());
 }
 

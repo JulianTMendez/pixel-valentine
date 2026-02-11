@@ -188,7 +188,7 @@ class _PixoramaState extends State<Pixorama> {
       final int centerY = (relativeY / actualGridHeight * height).floor();
 
       // Brush Radius: 2 means 5x5 area
-      const int radius = 2;
+      const int radius = 1;
       for (int dy = -radius; dy <= radius; dy++) {
         for (int dx = -radius; dx <= radius; dx++) {
           final int x = centerX + dx;
@@ -247,7 +247,7 @@ class _PixoramaState extends State<Pixorama> {
                               final int centerY =
                                   details.tapDetails.index ~/ width;
 
-                              const int radius = 2;
+                              const int radius = 1;
                               for (int dy = -radius; dy <= radius; dy++) {
                                 for (int dx = -radius; dx <= radius; dx++) {
                                   final int x = centerX + dx;

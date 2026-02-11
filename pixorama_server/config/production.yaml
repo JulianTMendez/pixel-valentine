@@ -1,0 +1,23 @@
+apiServer:
+  port: 8080
+  publicScheme: https
+  publicHost: api.yourdomain.com
+  publicPort: 443
+
+insightsServer:
+  port: 8081
+  publicScheme: https
+  publicHost: insights.yourdomain.com
+  publicPort: 443
+
+webServer:
+  port: 8082
+  publicScheme: https
+  publicHost: yourdomain.com
+  publicPort: 443
+
+database:
+  host: localhost
+  port: 5432
+  name: pixorama
+  user: postgres
