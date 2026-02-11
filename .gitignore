@@ -1,0 +1,33 @@
+# Serverpod
+/pixorama_server/config/passwords.yaml
+/pixorama_server/lib/src/generated/
+/pixorama_server/lib/src/protocol/
+/pixorama_server/lib/src/models/
+
+# Flutter
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+/pixorama_flutter/build/
+/pixorama_flutter/.dart_tool/
+/pixorama_flutter/.packages
+/pixorama_flutter/.pub-cache/
+/pixorama_flutter/.pub/
+
+# IDE files
+.idea/
+.vscode/
+*.iml
+*.iws
+
+# Sensitive data
+config/passwords.yaml
+passwords.yaml
+.env
+
+# System files
+.DS_Store
+Thumbs.db
