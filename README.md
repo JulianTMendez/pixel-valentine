@@ -25,20 +25,24 @@ A Flutter + Serverpod application where users can reveal a secret heart message 
 - Create a free PostgreSQL project on [Neon.tech](https://neon.tech).
 - Get your connection details (host, port, name, user, password).
 
-### 2. Backend (Render.com)
-- Create a new **Web Service** on [Render.com](https://render.com).
+### 2. Backend (Koyeb - No Credit Card Required)
+- Sign up for a free account at [Koyeb.com](https://www.koyeb.com/).
+- Click **Create Service** and select **GitHub**.
 - Connect this GitHub repository.
-- Set **Root Directory** to `pixorama_server`.
-- Set Environment Variables:
-  - `runmode`: `production`
-  - `PUBLIC_HOST`: Your Render URL (e.g., `pixorama.onrender.com`)
-  - `DB_HOST`: Your Neon host
-  - `DB_PORT`: `5432`
-  - `DB_NAME`: `neondb` (usually)
-  - `DB_USER`: Your Neon user
-  - `DB_PASSWORD`: Your Neon password
+- Select **Docker** as the deployment method.
+- **Service Configuration**:
+  - **Root Directory**: `pixorama_server`
+  - **Environment Variables**:
+    - `runmode`: `production`
+    - `PUBLIC_HOST`: Your Koyeb app URL (e.g., `pixorama-julian.koyeb.app`)
+    - `DB_HOST`: Your Neon host
+    - `DB_PORT`: `5432`
+    - `DB_NAME`: `neondb`
+    - `DB_USER`: `neondb_owner`
+    - `DB_PASSWORD`: Your Neon password
 
 ### 3. Frontend (Flutter Web)
 - Build the web app: `cd pixorama_flutter && flutter build web`.
-- Host the `build/web` folder on **GitHub Pages**, **Vercel**, or similar.
-- Update `assets/config.json` with your backend's Render URL.
+- Host the `build/web` folder on **GitHub Pages**, **Vercel**, or **Netlify**.
+- Update `assets/config.json` with your backend's Koyeb URL.
+
