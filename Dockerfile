@@ -29,11 +29,10 @@ COPY --from=build /app/pixorama_server/bin/server server
 
 # Copy configuration files and resources from the server directory
 COPY --from=build /app/pixorama_server/config/ config/
-COPY --from=build /app/pixorama_server/web/ web/
-COPY --from=build /app/pixorama_server/migrations/ migrations/
 
 # This file is required for Insight log filtering (from the server directory)
 COPY --from=build /app/pixorama_server/lib/src/generated/protocol.yaml lib/src/generated/protocol.yaml
+
 
 # Expose ports
 EXPOSE 8080
