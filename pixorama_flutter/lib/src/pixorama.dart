@@ -212,92 +212,106 @@ class _PixoramaState extends State<Pixorama> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      alignment: Alignment.topCenter,
-      children: [
-        Center(
-          child: _imageController == null
-              ? const CircularProgressIndicator()
-              : Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Expanded(
-                      child: GestureDetector(
-                        onPanStart: (details) {
-                          _paintedInStroke.clear();
-                          _handlePaint(details.globalPosition);
-                        },
-                        onPanUpdate: (details) {
-                          _handlePaint(details.globalPosition);
-                        },
-                        onPanEnd: (_) {
-                          _paintedInStroke.clear();
-                        },
-                        child: KeyedSubtree(
-                          key: _editorKey,
-                          child: PixelEditor(
-                            controller: _imageController!,
-                            onSetPixel: (details) {
-                              _selectedColorIndex = details.colorIndex;
+    return Container(
+      color: const Color(0xFF121212), // Sleek Dark Background
+      child: Stack(
+        alignment: Alignment.topCenter,
+        children: [
+          Center(
+            child: _imageController == null
+                ? Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      CircularProgressIndicator(color: Colors.pinkAccent),
+                      SizedBox(height: 20),
+                      Text(
+                        'Connecting to the Heart Server...',
+                        style: TextStyle(color: Colors.white70, fontSize: 16),
+                      ),
+                    ],
+                  )
+                : Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        child: GestureDetector(
+                          onPanStart: (details) {
+                            _paintedInStroke.clear();
+                            _handlePaint(details.globalPosition);
+                          },
+                          onPanUpdate: (details) {
+                            _handlePaint(details.globalPosition);
+                          },
+                          onPanEnd: (_) {
+                            _paintedInStroke.clear();
+                          },
+                          child: KeyedSubtree(
+                            key: _editorKey,
+                            child: PixelEditor(
+                              controller: _imageController!,
+                              onSetPixel: (details) {
+                                _selectedColorIndex = details.colorIndex;
 
-                              final int width = _imageController!.width;
-                              final int height = _imageController!.height;
-                              final int centerX =
-                                  details.tapDetails.index % width;
-                              final int centerY =
-                                  details.tapDetails.index ~/ width;
+                                final int width = _imageController!.width;
+                                final int height = _imageController!.height;
+                                final int centerX =
+                                    details.tapDetails.index % width;
+                                final int centerY =
+                                    details.tapDetails.index ~/ width;
 
-                              const int radius = 1;
-                              for (int dy = -radius; dy <= radius; dy++) {
-                                for (int dx = -radius; dx <= radius; dx++) {
-                                  final int x = centerX + dx;
-                                  final int y = centerY + dy;
-                                  if (x >= 0 &&
-                                      x < width &&
-                                      y >= 0 &&
-                                      y < height) {
-                                    final int pIndex = y * width + x;
-                                    client.pixorama.setPixel(
-                                      pixelIndex: pIndex,
-                                      colorIndex: details.colorIndex,
-                                    );
+                                const int radius = 1;
+                                for (int dy = -radius; dy <= radius; dy++) {
+                                  for (int dx = -radius; dx <= radius; dx++) {
+                                    final int x = centerX + dx;
+                                    final int y = centerY + dy;
+                                    if (x >= 0 &&
+                                        x < width &&
+                                        y >= 0 &&
+                                        y < height) {
+                                      final int pIndex = y * width + x;
+                                      client.pixorama.setPixel(
+                                        pixelIndex: pIndex,
+                                        colorIndex: details.colorIndex,
+                                      );
+                                    }
                                   }
                                 }
-                              }
-                            },
+                              },
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Text(
-                        _hasCelebrated
-                            ? '� MAGICAL HEART REVEALED! 🎊'
-                            : '�🎨 Drag to paint fast! Fill the heart for a surprise.',
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
+                      Padding(
+                        padding: const EdgeInsets.all(24.0),
+                        child: Text(
+                          _hasCelebrated
+                              ? '🎊 MAGICAL HEART REVEALED! 🎊'
+                              : '🎨 Drag to paint! Reveal the secret message.',
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            letterSpacing: 1.2,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-        ),
-        ConfettiWidget(
-          confettiController: _confettiController,
-          blastDirectionality: BlastDirectionality.explosive,
-          shouldLoop: false,
-          colors: const [
-            Colors.red,
-            Colors.pink,
-            Colors.white,
-            Colors.orange,
-            Colors.yellow,
-          ],
-        ),
-      ],
+                    ],
+                  ),
+          ),
+          ConfettiWidget(
+            confettiController: _confettiController,
+            blastDirectionality: BlastDirectionality.explosive,
+            shouldLoop: false,
+            colors: const [
+              Colors.red,
+              Colors.pink,
+              Colors.white,
+              Colors.orange,
+              Colors.yellow,
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
