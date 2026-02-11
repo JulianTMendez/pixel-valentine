@@ -1,17 +1,18 @@
 apiServer:
-  port: 8080
+  port: 8000
   publicScheme: https
   publicHost: pixorama-julian.koyeb.app
   publicPort: 443
 
 insightsServer:
-  port: 8081
+  port: 8001
   publicScheme: https
   publicHost: pixorama-julian.koyeb.app
   publicPort: 443
 
 webServer:
-  port: 8082
+  port: 8002
+
   publicScheme: https
   publicHost: pixorama-julian.koyeb.app
   publicPort: 443

@@ -10,9 +10,20 @@ late Client client;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Load configuration (API URL) from assets/config.json
-  final config = await AppConfig.loadConfig();
-  final apiUrl = config.apiUrl ?? 'http://localhost:8080/';
+  String apiUrl = 'https://pixorama-julian.koyeb.app/';
+
+  try {
+    // Load configuration (API URL) from assets/config.json
+    final config = await AppConfig.loadConfig();
+    if (config.apiUrl != null) {
+      apiUrl = config.apiUrl!;
+      if (!apiUrl.endsWith('/')) {
+        apiUrl = '$apiUrl/';
+      }
+    }
+  } catch (e) {
+    debugPrint('Error loading config: $e');
+  }
 
   client = Client(apiUrl)..connectivityMonitor = FlutterConnectivityMonitor();
 

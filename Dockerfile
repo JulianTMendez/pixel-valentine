@@ -36,9 +36,10 @@ COPY --from=build /app/pixorama_server/lib/src/generated/protocol.yaml lib/src/g
 
 
 # Expose ports
-EXPOSE 8080
-EXPOSE 8081
-EXPOSE 8082
+EXPOSE 8000
+EXPOSE 8001
+EXPOSE 8002
+
 
 # Define the entrypoint command
 ENTRYPOINT ./server --mode=$runmode --server-id=$serverid --logging=$logging --role=$role --apply-migrations
