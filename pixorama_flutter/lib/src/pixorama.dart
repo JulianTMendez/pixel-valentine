@@ -1,9 +1,15 @@
+import 'dart:js_interop';
+
 import 'package:flutter/material.dart';
 import 'package:pixels/pixels.dart';
 import 'package:pixorama_client/pixorama_client.dart';
 import 'package:confetti/confetti.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../main.dart';
+
+@JS('createYouTubePlayer')
+external void _callCreateYouTubePlayer();
 
 class Pixorama extends StatefulWidget {
   const Pixorama({super.key});
@@ -35,6 +41,25 @@ class _PixoramaState extends State<Pixorama> {
       duration: const Duration(seconds: 3),
     );
     _listenToUpdates();
+    _startYouTubeMusic();
+  }
+
+  void _startYouTubeMusic() {
+    // Call the JS function to create the YouTube player starting at 0:17
+    try {
+      _callCreateYouTubePlayer();
+    } catch (e) {
+      debugPrint('YouTube player init error: $e');
+    }
+  }
+
+  void _redirectToYouTube() {
+    Future.delayed(const Duration(seconds: 5), () {
+      launchUrl(
+        Uri.parse('https://www.youtube.com/watch?v=2Vv-BfVoq4g'),
+        mode: LaunchMode.externalApplication,
+      );
+    });
   }
 
   @override
@@ -51,16 +76,16 @@ class _PixoramaState extends State<Pixorama> {
       "      XXXXXX         XXXXXX       ",
       "    XX......XXXX.XXXX......XX     ",
       "   X............X............X    ",
-      "  X.....i.........u.....uuu...X   ",
-      "  X...............u....u...u..X   ",
-      " X......i.........u....u...u...X  ",
-      " X......i.........uuuu..uuu....X  ",
-      " X......i......................X   ",
-      "  X.....i......v.....v eeee...X   ",
-      "  X.....i.......v...v..e......X   ",
-      "   X.............v.v...eeee..X    ",
-      "    X.............v....e....X     ",
-      "     X.................eeeeX      ",
+      "  X...........................X   ",
+      "  X...........................X   ",
+      " X.............................X  ",
+      " X.............................X  ",
+      " X.............................X   ",
+      "  X...........................X   ",
+      "  X...........................X   ",
+      "   X.........................X    ",
+      "    X.......................X     ",
+      "     X.....................X      ",
       "      X...................X       ",
       "       X.................X        ",
       "        X...............X         ",
@@ -107,6 +132,7 @@ class _PixoramaState extends State<Pixorama> {
         _hasCelebrated = true;
       });
       _confettiController.play();
+      _redirectToYouTube();
     }
   }
 

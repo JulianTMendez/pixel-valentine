@@ -31,8 +31,37 @@
 
   <title>pixorama_flutter</title>
   <link rel="manifest" href="manifest.json">
+
+  <!-- YouTube IFrame API -->
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script>
+    var ytPlayer = null;
+    function createYouTubePlayer() {
+      if (ytPlayer) return;
+      ytPlayer = new YT.Player('yt-player', {
+        height: '0',
+        width: '0',
+        videoId: '2Vv-BfVoq4g',
+        playerVars: {
+          'autoplay': 1,
+          'start': 17,
+          'controls': 0,
+          'disablekb': 1,
+          'fs': 0,
+          'modestbranding': 1,
+          'rel': 0
+        },
+        events: {
+          'onReady': function(event) {
+            event.target.playVideo();
+          }
+        }
+      });
+    }
+  </script>
 </head>
 <body>
+  <div id="yt-player" style="position:absolute;top:-9999px;left:-9999px;"></div>
   <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>

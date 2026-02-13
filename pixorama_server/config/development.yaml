@@ -3,6 +3,7 @@ apiServer:
   publicScheme: http
   publicHost: localhost
   publicPort: 8080
+  httpAllowOrigin: '*'
 
 insightsServer:
   port: 8081
