@@ -1,7 +1,7 @@
 apiServer:
   port: 8000
   publicScheme: https
-  publicHost: lesser-annabela-victorymonk-b4k468b1.koyeb.app
+  publicHost: lesser-annabela-victorymonk-b48468b1.koyeb.app
   publicPort: 443
   httpAllowOrigin: '*'
 
@@ -9,13 +9,13 @@ apiServer:
 insightsServer:
   port: 8001
   publicScheme: https
-  publicHost: lesser-annabela-victorymonk-b4k468b1.koyeb.app
+  publicHost: lesser-annabela-victorymonk-b48468b1.koyeb.app
   publicPort: 443
 
 webServer:
   port: 8002
   publicScheme: https
-  publicHost: lesser-annabela-victorymonk-b4k468b1.koyeb.app
+  publicHost: lesser-annabela-victorymonk-b48468b1.koyeb.app
   publicPort: 443
 
 database:

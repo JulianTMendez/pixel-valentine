@@ -10,7 +10,7 @@ late Client client;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  String apiUrl = 'https://pixorama-julian.koyeb.app/';
+  String apiUrl = 'https://lesser-annabela-victorymonk-b48468b1.koyeb.app/';
 
   try {
     // Load configuration (API URL) from assets/config.json
@@ -26,6 +26,7 @@ void main() async {
   }
 
   client = Client(apiUrl)..connectivityMonitor = FlutterConnectivityMonitor();
+  debugPrint('Connecting to Serverpod at: $apiUrl');
 
   runApp(const PixoramaApp());
 }
