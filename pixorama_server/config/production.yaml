@@ -5,14 +5,18 @@ apiServer:
   publicPort: 443
   httpAllowOrigin: '*'
 
-# Disable other servers to prevent port/routing conflicts on the monolith
+# Restored servers because Serverpod validator requires publicHost even if "disabled"
 insightsServer:
   port: 8001
-  enabled: false
+  publicScheme: https
+  publicHost: lesser-annabela-victorymonk-b4k468b1.koyeb.app
+  publicPort: 443
 
 webServer:
   port: 8002
-  enabled: false
+  publicScheme: https
+  publicHost: lesser-annabela-victorymonk-b4k468b1.koyeb.app
+  publicPort: 443
 
 database:
   host: ep-snowy-wave-a11bycwy-pooler.ap-southeast-1.aws.neon.tech
