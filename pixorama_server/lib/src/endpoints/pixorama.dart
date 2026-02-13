@@ -118,7 +118,7 @@ class PixoramaEndpoint extends Endpoint {
   }
 
   /// Returns a stream of image updates.
-  Stream imageUpdates(Session session) async* {
+  Stream<dynamic> imageUpdates(Session session) async* {
     var updateStream = session.messages.createStream<ImageUpdate>(
       _channelPixelAdded,
     );

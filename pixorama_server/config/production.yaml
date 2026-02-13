@@ -5,18 +5,14 @@ apiServer:
   publicPort: 443
   httpAllowOrigin: '*'
 
+# Disable other servers to prevent port/routing conflicts on the monolith
 insightsServer:
   port: 8001
-  publicScheme: https
-  publicHost: lesser-annabela-victorymonk-b4k468b1.koyeb.app
-  publicPort: 443
+  enabled: false
 
 webServer:
   port: 8002
-
-  publicScheme: https
-  publicHost: lesser-annabela-victorymonk-b4k468b1.koyeb.app
-  publicPort: 443
+  enabled: false
 
 database:
   host: ep-snowy-wave-a11bycwy-pooler.ap-southeast-1.aws.neon.tech
